@@ -11,4 +11,4 @@ export PKI_KEYSTORE
 export PKI_STOREPASS
 export PKI_KEYPASS
 
-exec java -jar streams.examples-0.1-jar-with-dependencies.jar
+exec  /usr/bin/java -jar /usr/share/kafka-client/streams.examples.jar

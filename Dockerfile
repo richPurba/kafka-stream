@@ -1,7 +1,4 @@
 FROM openjdk:8
-COPY target/streams.examples-0.1-jar-with-dependencies.jar /usr/src/kafkaclient/
-WORKDIR /usr/src/kafkaclient/
-
 
 # for training purposed configure uid to be 1024 for dshdemo1 or 1025 for
 # dshdemo2
@@ -13,7 +10,10 @@ RUN groupadd --gid $id hod
 RUN useradd --no-create-home --uid $id --gid $id hod
 
 RUN mkdir -p /usr/share/kafka-client/conf
+ADD target/streams.examples-0.1-jar-with-dependencies.jar /usr/share/kafka-client/streams.examples.jar
 
+RUN chown -R $id:$id /usr/share/kafka-client \
+    && chmod -R o-rwx /usr/share/kafka-client
 USER $id
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
