@@ -16,4 +16,4 @@ RUN mkdir -p /usr/share/kafka-client/conf
 
 USER $id
 
-ENTRYPOINT [ "docker-entrypoint.sh" ]
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
