@@ -6,6 +6,7 @@ ENV id 1071
 ADD get_signed_certificate.sh /get_signed_certificate.sh
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 
+# i changed the gid (on RUN useradd) to hod from dshdemo. Is this correct?
 RUN groupadd --gid $id hod
 RUN useradd --no-create-home --uid $id --gid $id hod
 
