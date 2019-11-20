@@ -1,5 +1,5 @@
-FROM maven:3.3-jdk-8
-COPY . /usr/src/kafkaclient/
+FROM openjdk:8
+COPY target/streams.examples-0.1-jar-with-dependencies.jar /usr/src/kafkaclient/
 WORKDIR /usr/src/kafkaclient/
 
 
@@ -16,4 +16,4 @@ RUN mkdir -p /usr/share/kafka-client/conf
 
 USER $id
 
-ENTRYPOINT [ "mvn", "exec:java", "-Dexec.mainClass=myapps.WordCount" ]
+ENTRYPOINT [ "docker-entrypoint.sh" ]
